@@ -3,6 +3,8 @@ extern crate piston_window;
 
 mod draw;
 mod snake;
+mod game;
+
 
 fn main() {
     for i in 1..300 {
