@@ -38,23 +38,25 @@ pub struct Snake {
 }
 
 impl Snake {
-    pub fn new(x>i32, y:i32) -> Snake {
+    pub fn new(x:i32, y:i32) -> Snake {
         let mut body: LinkedList<Block> = LinkedList::new();
         body.push_back(Block {
             x: x+2,
             y,
         });
+
         body.push_back(Block {
             x: x+1,
             y,
         });
+
         body.push_back(Block {
             x,
             y,
-        })
+        });
 
         Snake {
-            direction: Direction::Right;
+            direction: Direction::Right, 
             body,
             tail: None,
         }
@@ -62,7 +64,7 @@ impl Snake {
 
     pub fn draw(&self, con: &Context, g: &mut G2d) {
         for block in &self.body {
-            draw_block(SNAKE_COLOR, block.x: , block.y, con, g);
+            draw_block(SNAKE_COLOR, block.x, block.y, con, g);
         }
     } 
 
@@ -128,7 +130,7 @@ impl Snake {
         self.body.push_back(blk);
     }
 
-    pub fn overlay_tail(&self, x: i32, y: i32) -> bool {
+    pub fn overlap_tail(&self, x: i32, y: i32) -> bool {
         let mut ch = 0;
         for block in &self.body {
             if x == block.x && y == block.y {
